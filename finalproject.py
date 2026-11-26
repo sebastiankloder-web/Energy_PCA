@@ -143,7 +143,7 @@ from google.colab import files
 
 # --- GRAPH A (Primary): Eigenvector Loadings Across All Stocks on One Graph ---
 fig, ax = plt.subplots(figsize=(13, 6))
-x = np.arange(N)
+stock_idx = np.arange(N)
 
 markers = ["o", "s", "^"]
 colors = ["#1f77b4", "#ff7f0e", "#2ca02c"]
@@ -151,7 +151,7 @@ colors = ["#1f77b4", "#ff7f0e", "#2ca02c"]
 for idx, col in enumerate(["PC1", "PC2", "PC3"]):
     var_pct = explained_var_ratio[idx] * 100
     ax.plot(
-        x,
+        stock_idx,
         pc_loadings_df[col],
         marker=markers[idx],
         color=colors[idx],
@@ -161,7 +161,7 @@ for idx, col in enumerate(["PC1", "PC2", "PC3"]):
     )
 
 ax.axhline(0, color="black", linestyle="--", linewidth=1, alpha=0.6)
-ax.set_xticks(x)
+ax.set_xticks(stock_idx)
 ax.set_xticklabels(tickers, rotation=45, ha="right", fontsize=11)
 ax.set_xlabel("S&P 500 Energy Stocks", fontsize=12)
 ax.set_ylabel("Eigenvector Loading (Component Weight)", fontsize=12)
